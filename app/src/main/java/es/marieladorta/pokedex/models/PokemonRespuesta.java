@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class PokemonRespuesta {
 
-    private ArrayList<Pokemones> results;
+    private ArrayList<NameUrl> results;
 
-    public ArrayList<Pokemones> getResults() {
+    public ArrayList<NameUrl> getResults() {
         return results;
     }
 

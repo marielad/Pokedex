@@ -1,10 +1,11 @@
 package es.marieladorta.pokedex.models;
 
-public class Pokemones {
+public class NameUrl {
 
     private String name;
     private String url;
-    private int number;
+
+    private int number;//Con esto cogemos el id del pokemon en @GET("pokemon")
 
     public String getName() {
         return name;

@@ -9,7 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import es.marieladorta.pokedex.models.Pokemones;
+import es.marieladorta.pokedex.models.NameUrl;
 import es.marieladorta.pokedex.models.PokemonRespuesta;
 import es.marieladorta.pokedex.controller.PokeapiService;
 import retrofit2.Call;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
     private Retrofit retrofit;
 
     private RecyclerView recyclerView;
-    private ListaPokemonAdapter listaPokemonAdapter;;
+    private ListaPokemonAdapter listaPokemonAdapter;
 
     private int offset;
 //    private boolean aptoParaCargar;
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
 
                 if(response.isSuccessful()){
                     PokemonRespuesta pokemonRespuesta = response.body();
-                    ArrayList<Pokemones> listaPokemon = pokemonRespuesta.getResults();
+                    ArrayList<NameUrl> listaPokemon = pokemonRespuesta.getResults();
 
                     listaPokemonAdapter.addListaPokemon(listaPokemon);
 

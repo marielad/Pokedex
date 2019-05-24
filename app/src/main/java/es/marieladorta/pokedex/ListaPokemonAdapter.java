@@ -15,7 +15,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
 
-import es.marieladorta.pokedex.models.Pokemones;
+import es.marieladorta.pokedex.models.NameUrl;
 
 public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapter.ViewHolder> {
 
@@ -24,7 +24,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
     private Context context;
 
-    private ArrayList<Pokemones> pokeList;
+    private ArrayList<NameUrl> pokeList;
 
     public ListaPokemonAdapter(Context context,ItemClickListener mOnClickListener) {
         this.context = context;
@@ -40,7 +40,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Pokemones pokemon = pokeList.get(i);
+        NameUrl pokemon = pokeList.get(i);
         viewHolder.nombrePokemon.setText(pokemon.getName());
 
         //Imágenes con Glide
@@ -59,7 +59,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
         return pokeList.size();
     }
 
-    public void addListaPokemon(ArrayList<Pokemones> listaPokemon) {
+    public void addListaPokemon(ArrayList<NameUrl> listaPokemon) {
         pokeList.addAll(listaPokemon);
         notifyDataSetChanged();
     }
