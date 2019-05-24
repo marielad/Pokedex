@@ -1,6 +1,6 @@
 package es.marieladorta.pokedex.models;
 
-public class Pokemon {
+public class Pokemones {
 
     private String name;
     private String url;

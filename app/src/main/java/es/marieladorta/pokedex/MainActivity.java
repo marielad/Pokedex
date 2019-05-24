@@ -1,17 +1,15 @@
 package es.marieladorta.pokedex;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import es.marieladorta.pokedex.models.Pokemon;
+import es.marieladorta.pokedex.models.Pokemones;
 import es.marieladorta.pokedex.models.PokemonRespuesta;
 import es.marieladorta.pokedex.controller.PokeapiService;
 import retrofit2.Call;
@@ -27,10 +25,11 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
     private Retrofit retrofit;
 
     private RecyclerView recyclerView;
-    private ListaPokemonAdapter listaPokemonAdapter;
+    private ListaPokemonAdapter listaPokemonAdapter;;
 
     private int offset;
-    private boolean aptoParaCargar;
+//    private boolean aptoParaCargar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,33 +42,36 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this,3);//3 es el tamaño de las columnas
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
-            @Override
-                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                    super.onScrolled(recyclerView, dx, dy);
 
-                    if (dy>0){
-                        int visibleItemCount = layoutManager.getChildCount();
-                        int totalItemCount = layoutManager.getItemCount();
-                        int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
-
-                        if(aptoParaCargar){
-                            if ((visibleItemCount + pastVisibleItems) >= totalItemCount){
-                                aptoParaCargar = false;
-                                offset += 20;
-                                obtenerDatos(offset);
-                            }
-                        }
-                    }
-                }
-            }
-        );
+//        Método para cargar los datos de 20 en 20 cuando la llamada a service.obtenerListaPokemon tiene limit 20 y offset+=20
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
+//            @Override
+//                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//                    super.onScrolled(recyclerView, dx, dy);
+//
+//                    if (dy>0){
+//                        int visibleItemCount = layoutManager.getChildCount();
+//                        int totalItemCount = layoutManager.getItemCount();
+//                        int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
+//
+//                        if(aptoParaCargar){
+//                            if ((visibleItemCount + pastVisibleItems) >= totalItemCount){
+//                                aptoParaCargar = false;
+//                                offset += 20;
+//                                obtenerDatos(offset);
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        );
+//        aptoParaCargar = true;
 
         retrofit =  new Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        aptoParaCargar = true;
+
         offset = 0;
         obtenerDatos(offset);
 
@@ -77,16 +79,16 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
 
     private void obtenerDatos(int offset) {
         PokeapiService service = retrofit.create(PokeapiService.class);
-        Call<PokemonRespuesta> pokemonRespuestaCall = service.obtenerListaPokemon(20,offset);
+        Call<PokemonRespuesta> pokemonRespuestaCall = service.obtenerListaPokemon(807,offset);
 
         pokemonRespuestaCall.enqueue(new Callback<PokemonRespuesta>() {
             @Override
             public void onResponse(Call<PokemonRespuesta> call, Response<PokemonRespuesta> response) {
-                aptoParaCargar = true;
+//                aptoParaCargar = true;
 
                 if(response.isSuccessful()){
                     PokemonRespuesta pokemonRespuesta = response.body();
-                    ArrayList<Pokemon> listaPokemon = pokemonRespuesta.getResults();
+                    ArrayList<Pokemones> listaPokemon = pokemonRespuesta.getResults();
 
                     listaPokemonAdapter.addListaPokemon(listaPokemon);
 
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
 
             @Override
             public void onFailure(Call<PokemonRespuesta> call, Throwable t) {
-                aptoParaCargar = true;
+//                aptoParaCargar = true;
                 Log.e(TAG, "onFailure :" + t.getMessage());
             }
         });
@@ -106,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
     @Override
     public void onItemClick(int clickedItemIndex) {
         Intent intentPokemonActivity = new Intent(MainActivity.this, PokemonActivity.class);
-//        intentPokemonActivity.putExtra("id", clickedItemIndex);
+        intentPokemonActivity.putExtra("id", clickedItemIndex+1);
         startActivity(intentPokemonActivity);
     }
 }

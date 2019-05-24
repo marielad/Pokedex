@@ -1,7 +1,6 @@
 package es.marieladorta.pokedex;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +15,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
 
-import es.marieladorta.pokedex.models.Pokemon;
+import es.marieladorta.pokedex.models.Pokemones;
 
 public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapter.ViewHolder> {
 
@@ -25,7 +24,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
     private Context context;
 
-    private ArrayList<Pokemon> pokeList;
+    private ArrayList<Pokemones> pokeList;
 
     public ListaPokemonAdapter(Context context,ItemClickListener mOnClickListener) {
         this.context = context;
@@ -41,7 +40,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Pokemon pokemon = pokeList.get(i);
+        Pokemones pokemon = pokeList.get(i);
         viewHolder.nombrePokemon.setText(pokemon.getName());
 
         //Imágenes con Glide
@@ -52,7 +51,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(viewHolder.fotoPokemon);
 
-        Log.i(TAG, "Numero Pokemon: " + pokemon.getName() + pokemon.getNumber());
+        Log.i(TAG, "Numero Pokemones: " + pokemon.getName() + pokemon.getNumber());
     }
 
     @Override
@@ -60,11 +59,10 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
         return pokeList.size();
     }
 
-    public void addListaPokemon(ArrayList<Pokemon> listaPokemon) {
+    public void addListaPokemon(ArrayList<Pokemones> listaPokemon) {
         pokeList.addAll(listaPokemon);
         notifyDataSetChanged();
     }
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
