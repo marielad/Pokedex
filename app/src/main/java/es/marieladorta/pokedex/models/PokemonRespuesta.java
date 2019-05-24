@@ -13,4 +13,6 @@ public class PokemonRespuesta {
     public void setResults(ArrayList<Pokemon> results) {
         this.results = results;
     }
+
+
 }

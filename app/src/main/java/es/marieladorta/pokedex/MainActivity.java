@@ -1,11 +1,13 @@
 package es.marieladorta.pokedex;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,7 +20,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListaPokemonAdapter.ItemClickListener{
 
     private static final String TAG = "POKEDEX";
 
@@ -35,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        listaPokemonAdapter = new ListaPokemonAdapter(this);
+        recyclerView = findViewById(R.id. recyclerView);
+        listaPokemonAdapter = new ListaPokemonAdapter(this, this);
         recyclerView.setAdapter(listaPokemonAdapter);
         recyclerView.setHasFixedSize(true);
         final GridLayoutManager layoutManager = new GridLayoutManager(this,3);//3 es el tamaño de las columnas
@@ -99,5 +101,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "onFailure :" + t.getMessage());
             }
         });
+    }
+
+    @Override
+    public void onItemClick(int clickedItemIndex) {
+        Intent intentPokemonActivity = new Intent(MainActivity.this, PokemonActivity.class);
+//        intentPokemonActivity.putExtra("id", clickedItemIndex);
+        startActivity(intentPokemonActivity);
     }
 }

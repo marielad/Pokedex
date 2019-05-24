@@ -1,7 +1,9 @@
 package es.marieladorta.pokedex;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +20,16 @@ import es.marieladorta.pokedex.models.Pokemon;
 
 public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapter.ViewHolder> {
 
+    private static final String TAG = "POKE";
+    private final ItemClickListener mOnClickListener;
+
     private Context context;
 
     private ArrayList<Pokemon> pokeList;
 
-    public ListaPokemonAdapter(Context context) {
+    public ListaPokemonAdapter(Context context,ItemClickListener mOnClickListener) {
         this.context = context;
+        this.mOnClickListener = mOnClickListener;
         pokeList = new ArrayList<>();
     }
 
@@ -45,6 +51,8 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
                 .crossFade())
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(viewHolder.fotoPokemon);
+
+        Log.i(TAG, "Numero Pokemon: " + pokemon.getName() + pokemon.getNumber());
     }
 
     @Override
@@ -57,7 +65,9 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView fotoPokemon;
         private TextView nombrePokemon;
 
@@ -66,6 +76,17 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
             fotoPokemon = itemView.findViewById(R.id.fotoPokemon);
             nombrePokemon = itemView.findViewById(R.id.nombrePokemon);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            int clickedPosition = getAdapterPosition();
+            mOnClickListener.onItemClick(clickedPosition);
+        }
+    }
+
+    public interface ItemClickListener{
+        void onItemClick(int clickedItemIndex);
     }
 }
