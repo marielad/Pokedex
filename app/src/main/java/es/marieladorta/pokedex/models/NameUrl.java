@@ -1,8 +1,12 @@
 package es.marieladorta.pokedex.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class NameUrl {
 
+    @SerializedName("name")
     private String name;
+    @SerializedName("url")
     private String url;
 
     private int number;//Con esto cogemos el id del pokemon en @GET("pokemon")

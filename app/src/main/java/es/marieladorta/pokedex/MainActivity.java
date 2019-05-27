@@ -9,20 +9,17 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import es.marieladorta.pokedex.controller.PokeClient;
 import es.marieladorta.pokedex.models.NameUrl;
 import es.marieladorta.pokedex.models.PokemonRespuesta;
 import es.marieladorta.pokedex.controller.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements ListaPokemonAdapter.ItemClickListener{
 
     private static final String TAG = "POKEDEX";
-
-    private Retrofit retrofit;
 
     private RecyclerView recyclerView;
     private ListaPokemonAdapter listaPokemonAdapter;
@@ -66,19 +63,13 @@ public class MainActivity extends AppCompatActivity implements ListaPokemonAdapt
 //            }
 //        );
 //        aptoParaCargar = true;
-
-        retrofit =  new Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
         offset = 0;
         obtenerDatos(offset);
 
     }
 
     private void obtenerDatos(int offset) {
-        PokeapiService service = retrofit.create(PokeapiService.class);
+        PokeapiService service = PokeClient.getRetrofit().create(PokeapiService.class);
         Call<PokemonRespuesta> pokemonRespuestaCall = service.obtenerListaPokemon(807,offset);
 
         pokemonRespuestaCall.enqueue(new Callback<PokemonRespuesta>() {

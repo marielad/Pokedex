@@ -1,24 +1,21 @@
 package es.marieladorta.pokedex.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Tipos {
-    private int slot;
-    private ArrayList<NameUrl> type;
 
-    public int getSlot() {
+    @SerializedName("slot")
+    private double slot;
+
+    private NameUrl type;
+
+    public double getSlot() {
         return slot;
     }
 
-    public void setSlot(int slot) {
-        this.slot = slot;
-    }
-
-    public ArrayList<NameUrl> getType() {
+    public NameUrl getType() {
         return type;
-    }
-
-    public void setType(ArrayList<NameUrl> type) {
-        this.type = type;
     }
 }

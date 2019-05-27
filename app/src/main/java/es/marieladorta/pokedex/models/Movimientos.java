@@ -1,16 +1,13 @@
 package es.marieladorta.pokedex.models;
 
-import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
 
 public class Movimientos {
 
-    private ArrayList<NameUrl> moves;
+    @SerializedName("move")
+    private NameUrl move;
 
-    public ArrayList<NameUrl> getMoves() {
-        return moves;
-    }
-
-    public void setMoves(ArrayList<NameUrl> moves) {
-        this.moves = moves;
+    public NameUrl getMove() {
+        return move;
     }
 }

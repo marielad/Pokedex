@@ -1,34 +1,27 @@
 package es.marieladorta.pokedex.models;
 
-import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
 
 public class Habilidades {
 
-    private ArrayList<NameUrl> ability;
-    private String is_hidden;
-    private int slot;
+    @SerializedName("ability")
+    private NameUrl ability;
 
-    public ArrayList<NameUrl> getAbility() {
+    @SerializedName("is_hidden")
+    private Boolean is_hidden;
+
+    @SerializedName("slot")
+    private double slot;
+
+    public NameUrl getAbility() {
         return ability;
     }
 
-    public void setAbility(ArrayList<NameUrl> ability) {
-        this.ability = ability;
-    }
-
-    public String getIs_hidden() {
+    public Boolean getIs_hidden() {
         return is_hidden;
     }
 
-    public void setIs_hidden(String is_hidden) {
-        this.is_hidden = is_hidden;
-    }
-
-    public int getSlot() {
+    public double getSlot() {
         return slot;
-    }
-
-    public void setSlot(int slot) {
-        this.slot = slot;
     }
 }
