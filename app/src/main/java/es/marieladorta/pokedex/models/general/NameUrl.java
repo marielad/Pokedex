@@ -1,4 +1,4 @@
-package es.marieladorta.pokedex.models;
+package es.marieladorta.pokedex.models.general;
 
 import com.google.gson.annotations.SerializedName;
 

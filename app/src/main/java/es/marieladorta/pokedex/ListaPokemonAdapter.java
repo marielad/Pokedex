@@ -15,7 +15,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
 
-import es.marieladorta.pokedex.models.NameUrl;
+import es.marieladorta.pokedex.models.general.NameUrl;
 
 public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapter.ViewHolder> {
 

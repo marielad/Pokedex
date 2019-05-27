@@ -1,4 +1,6 @@
-package es.marieladorta.pokedex.models;
+package es.marieladorta.pokedex.models.pokemon;
+
+import es.marieladorta.pokedex.models.general.NameUrl;
 
 public class Stats {
 

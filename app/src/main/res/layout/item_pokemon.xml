@@ -14,5 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="true"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:fontFamily="@font/press_start_2p"
+        android:textSize="8sp"/>
 </LinearLayout>

@@ -1,8 +1,10 @@
-package es.marieladorta.pokedex.models;
+package es.marieladorta.pokedex.models.pokemon;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+
+import es.marieladorta.pokedex.models.general.NameUrl;
 
 public class Pokemon {
 

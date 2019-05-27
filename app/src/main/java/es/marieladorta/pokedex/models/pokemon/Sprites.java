@@ -1,4 +1,4 @@
-package es.marieladorta.pokedex.models;
+package es.marieladorta.pokedex.models.pokemon;
 
 public class Sprites {
 

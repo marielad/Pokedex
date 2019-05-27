@@ -10,11 +10,9 @@ import com.bumptech.glide.Glide;
 
 import es.marieladorta.pokedex.controller.PokeClient;
 import es.marieladorta.pokedex.controller.PokeapiService;
-import es.marieladorta.pokedex.models.Habilidades;
-import es.marieladorta.pokedex.models.Movimientos;
-import es.marieladorta.pokedex.models.Pokemon;
-import es.marieladorta.pokedex.models.PokemonSpecies;
-import es.marieladorta.pokedex.models.Stats;
+import es.marieladorta.pokedex.models.pokemon.Pokemon;
+import es.marieladorta.pokedex.models.pokeSpecies.PokemonSpecies;
+import es.marieladorta.pokedex.models.pokemon.Stats;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,7 +24,6 @@ public class PokemonActivity extends AppCompatActivity {
 
     private TextView nombrePokemon, tipoPokemon, tipoPokemon2, infoPokemon, statsPokemon, descripcionPokemon;
     private ImageView fotoPokemon;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +70,10 @@ public class PokemonActivity extends AppCompatActivity {
                                 .into(fotoPokemon);
 
                         infoPokemon.setText(
-                                "Id:   " + pokemonResponse.getId()+"\n"+
+                                "Id: " + pokemonResponse.getId()+"\n"+
                                 "Peso: " + pokemonResponse.getWeight()+"\n"+
-                                "Altura:   " + pokemonResponse.getHeight()+"\n"+
-                                "Especie:   " + pokemonResponse.getSpecies().getName()+"\n"+
+                                "Altura: " + pokemonResponse.getHeight()+"\n"+
+                                "Especie: " + pokemonResponse.getSpecies().getName()+"\n"+
                                 "Habilidades Pasivas: \n"
                         );
 

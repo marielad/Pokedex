@@ -22,6 +22,7 @@
             android:layout_width="200dp"
             android:layout_height="30dp"
             android:gravity="center"
+            android:fontFamily="@font/press_start_2p"
             app:layout_constraintBottom_toTopOf="@+id/tipoPokemon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,6 +37,8 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:gravity="center"
+                android:fontFamily="@font/press_start_2p"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/spritePokemon"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,6 +47,8 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:gravity="center"
+                android:fontFamily="@font/press_start_2p"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/spritePokemon"
                 app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
@@ -55,7 +60,7 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:contentDescription="TODO"
+            android:contentDescription="PokeImagen"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -73,15 +78,19 @@
 
         <TextView
             android:id="@+id/infoPokemon"
-            android:layout_width="200dp"
+            android:layout_width="210dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/press_start_2p"
+            android:textSize="10sp"
             android:layout_alignParentStart="true"
             android:padding="8dp"/>
 
         <TextView
             android:id="@+id/statsPokemon"
-            android:layout_width="200dp"
+            android:layout_width="210dp"
             android:layout_height="match_parent"
+            android:fontFamily="@font/press_start_2p"
+            android:textSize="10sp"
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@+id/infoPokemon"
             android:padding="8dp"/>
@@ -107,8 +116,10 @@
 
             <TextView
                 android:id="@+id/descriptionPokemon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/press_start_2p"
+                android:textSize="12sp" />
 
         </ScrollView>
     </LinearLayout>

@@ -1,8 +1,10 @@
-package es.marieladorta.pokedex.models;
+package es.marieladorta.pokedex.models.general;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Lenguaje {
+import es.marieladorta.pokedex.models.general.NameUrl;
+
+public class FlavorText {
 
     @SerializedName("flavor_text")
     private String flavor_text;

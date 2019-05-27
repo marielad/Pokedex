@@ -10,8 +10,8 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import es.marieladorta.pokedex.controller.PokeClient;
-import es.marieladorta.pokedex.models.NameUrl;
-import es.marieladorta.pokedex.models.PokemonRespuesta;
+import es.marieladorta.pokedex.models.general.NameUrl;
+import es.marieladorta.pokedex.models.pokemon.PokemonRespuesta;
 import es.marieladorta.pokedex.controller.PokeapiService;
 import retrofit2.Call;
 import retrofit2.Callback;
