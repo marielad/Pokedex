@@ -107,7 +107,7 @@ public class PokemonActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     PokemonSpecies especie = response.body();
                     for(int i=0 ; i <= especie.getFlavor_text_entries().size(); i++){
-                        if (especie.getFlavor_text_entries().get(i).getLanguage().getName().equals("es")){
+                        if (especie.getFlavor_text_entries().get(i).getLanguage().getName().equals("en")){
                             descripcionPokemon.setText(especie.getFlavor_text_entries().get(i).getFlavor_text());
                             break;
                         }else{
@@ -124,6 +124,8 @@ public class PokemonActivity extends AppCompatActivity {
             public void onFailure(Call<PokemonSpecies> call, Throwable t) {
                     Log.e(TAG, "onFailure: " + t.getMessage());
             }
+
+            
         });
     }
 }
